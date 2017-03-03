@@ -3,5 +3,6 @@ module.exports = {
     Structures: require('./Structures'),
     Constants: require('./Constants'),
     PE: require('./PE'),
-    PeReader: require('./PeReader')
+    PeReader: require('./PeReader'),
+    FileIO: require('./FileIO'),
 };

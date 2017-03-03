@@ -1,7 +1,6 @@
-const yuilib = require('yuilib');
-const {PE, PeReader, } = require('./src');
+const {PE, PeReader, FileIO, } = require('./src');
 
-var io = new yuilib.IO.FileIO('hello.exe', 'r');
+var io = new FileIO('hello.exe', 'r');
 var pe = new PE();
 var peReader = new PeReader(pe);
 
