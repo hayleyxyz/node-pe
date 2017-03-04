@@ -7,12 +7,5 @@ module.exports = class extends Struct {
         this.uint32le('relativeVirtualAddress')
             .uint32le('size');
     }
-
-    get targetObject() {
-        return new (class {
-            get isZero() {
-                return !this.relativeVirtualAddress && !this.size;
-            }
-        });
-    }
+    
 }

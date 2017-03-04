@@ -46,7 +46,11 @@ class Struct {
     }
 
     get targetObject() {
-        return { };
+        return new (class {
+            get isZero() {
+                return Object.values(this).filter(a => !!a).length === 0;
+            }
+        });
     }
 
 }

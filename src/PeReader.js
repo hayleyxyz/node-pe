@@ -22,7 +22,7 @@ module.exports = class {
         }
 
         this.readSectionHeaders(io);
-
+        this.readImportDirectory(io);
         this.readCliHeader(io);
         this.readCliMetaData(io);
 
@@ -35,6 +35,28 @@ module.exports = class {
             this.pe.sections.push(
                 new Structures.CoffSectionHeader().readIo(io)
             );
+        }
+    }
+
+    readImportDirectory(io) {
+         if(this.pe.dataDirectory[Constants.DataDirectoryIndex.ImportTable].isZero) {
+            return;
+        }
+
+        this.moveToRva(io, this.pe.dataDirectory[Constants.DataDirectoryIndex.ImportTable].relativeVirtualAddress);
+
+        console.log(io.position);
+
+        this.pe.importDirectoryEntries = [ ];
+
+        while(true) {
+            var entry = new Structures.ImportDirectoryTableEntry().readIo(io);
+
+            if(entry.isZero) {
+                break;
+            }
+
+            this.pe.importDirectoryEntries.push(entry);
         }
     }
 

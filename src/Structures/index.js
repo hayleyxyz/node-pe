@@ -6,4 +6,5 @@ module.exports = {
     CoffSectionHeader: require('./CoffSectionHeader'),
     CliHeader: require('./CliHeader'),
     CliMetaDataHeader: require('./CliMetaDataHeader'),
+    ImportDirectoryTableEntry: require('./ImportDirectoryTableEntry'),
 };
